@@ -17,3 +17,10 @@ How to use Clash easily
 - https://blog.csdn.net/weixin_41538642/article/details/127767822
 - 对于github：https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/0_proxy.yaml
 - 对于gitee：https://gitee.com/vector9584/Clash/raw/main/rules/classical/0_direct.yaml
+## 软件下载
+- https://www.clashforwindows.net/clash-for-windows-download/
+## 软件汉化
+- Windows汉化版
+    - https://github.com/Z-Siqi/Clash-for-Windows_Chinese/releases
+- Mac汉化包
+    - 照上面连接对应版本的app.asar进行替换
