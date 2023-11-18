@@ -1,0 +1,205 @@
+parsers: # array
+  # url为对应的配置文件更新地址
+  - url: url
+    yaml:
+      # 在代理组尾部添加
+      append-proxy-groups:
+        - name: 🚫直连
+          type: url-test
+          proxies: [DIRECT]
+          url: "http://www.gstatic.com/generate_204"
+          interval: 86400
+        - name: 🛑广告屏蔽
+          type: select
+          proxies: [REJECT,🚫直连]
+        - name: 🇭🇰🇲🇴港澳台
+          type: url-test
+          proxies: [香港 1, 香港 2, 香港 3, 香港 4, 香港 5, 香港 6, 台湾 1, 台湾 2, 台湾 3]
+          url: "http://www.gstatic.com/generate_204"
+          interval: 86400
+        - name: 🇯🇵日本
+          type: url-test
+          proxies: [日本 1, 日本 2, 日本 3, 日本 4, 日本 5, 日本 6]
+          url: "http://www.gstatic.com/generate_204"
+          interval: 86400
+        - name: 🇸🇬新加坡
+          type: url-test
+          proxies: [新加坡 1, 新加坡 2, 新加坡 3, 新加坡 4, 新加坡 5, 新加坡 6]
+          url: "http://www.gstatic.com/generate_204"
+          interval: 86400
+        - name: 🇺🇸美国
+          type: url-test
+          proxies: [美国 1, 美国 2, 美国 3, 美国 4, 美国 5, 美国 6]
+          url: "http://www.gstatic.com/generate_204"
+          interval: 86400
+      # 在代理组头部添加
+      prepend-proxy-groups:
+        - name: 🛫墙外网站
+          type: select
+          proxies: [自动选择,🚫直连,🇭🇰🇲🇴港澳台, 🇯🇵日本,🇸🇬新加坡, 🇺🇸美国, 韩国, 印度, 澳大利亚, 土耳其, 以色列, 阿联酋, 沙特阿拉伯, 哈萨克斯坦 3x, 英国, 法国, 德国, 俄罗斯, 乌克兰, 芬兰, 荷兰, 爱尔兰, 意大利, 奥地利, 挪威, 瑞典, 瑞士, 希腊, 丹麦, 西班牙, 葡萄牙, 立陶宛, 爱沙尼亚, 拉脱维亚, 保加利亚, 比利时, 波兰, 捷克, 罗马尼亚, 摩尔多瓦, 塞尔维亚, 斯洛伐克, 匈牙利, 冰岛, 加拿大, 墨西哥, 巴西, 智利, 阿根廷, 南非, 尼日利亚,故障转移]
+        - name: Ⓜ️微软苹果
+          type: select
+          proxies:
+            - 🛫墙外网站
+            - 🚫直连
+        - name: 🐟其他网站
+          type: select
+          proxies: [🛫墙外网站, 🚫直连]
+      mix-rule-providers:
+        Proxy:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/0_proxy.yaml"
+          interval: 86400 # 24小时
+        Direct:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/0_direct.yaml"
+          interval: 86400 # 24小时
+        Reject:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/0_reject.yaml"
+          interval: 86400 # 24小时
+        Apple:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Apple.yaml"
+          interval: 86400 # 24小时
+        Bahamut:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Bahamut.yaml"
+          interval: 86400 # 24小时
+        Bilibili:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Bilibili.yaml"
+          interval: 86400 # 24小时
+        Disney:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Disney.yaml"
+          interval: 86400 # 24小时
+        Google:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Google.yaml"
+          interval: 86400 # 24小时
+        Microsoft:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Microsoft.yaml"
+          interval: 86400 # 24小时
+        Netflix:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Netflix.yaml"
+          interval: 86400 # 24小时
+        OpenAI:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/OpenAI.yaml"
+          interval: 86400 # 24小时
+        PayPal:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/PayPal.yaml"
+          interval: 86400 # 24小时
+        Spotify:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Spotify.yaml"
+          interval: 86400 # 24小时
+        Steam:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Steam.yaml"
+          interval: 86400 # 24小时
+        Telegram:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/Telegram.yaml"
+          interval: 86400 # 24小时
+        YouTube:
+          behavior: classical # domain, ipcidr or classical (premium core only)
+          type: http # 可填写http及file「在线文件填写http，本地文件填写file」
+          url: "https://raw.githubusercontent.com/vector9584/Clash/main/rules/classical/YouTube.yaml"
+          interval: 86400 # 24小时
+        
+      commands:
+        # 删除原有规则
+        - rules-
+        # 删除代理广告
+        - proxies.0-
+        - proxies.0-
+        - proxies.0-
+        - proxy-groups.自动选择.proxies.0-
+        - proxy-groups.自动选择.proxies.0-
+        - proxy-groups.自动选择.proxies.0-
+        - proxy-groups.故障转移.proxies.0-
+        - proxy-groups.故障转移.proxies.0-
+        - proxy-groups.故障转移.proxies.0-
+        # 删除不需要节点
+        - proxy-groups.节点选择-
+        - proxy-groups.Microsoft-
+        - proxy-groups.Apple-
+        - proxy-groups.Final-
+        # 修改已有节点
+        - proxy-groups.Bilibili.proxies=[]groupNames|🚫直连|🇭🇰🇲🇴港澳台
+        - proxy-groups.Steam.proxies=[]groupNames|🚫直连|🛫墙外网站
+        - proxy-groups.YouTube.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.YouTube.type=fallback
+        - proxy-groups.YouTube.interval=7200
+        - proxy-groups.YouTube.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.Netflix.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.Netflix.type=fallback
+        - proxy-groups.Netflix.interval=7200
+        - proxy-groups.Netflix.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.Disney.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.Disney.type=fallback
+        - proxy-groups.Disney.interval=7200
+        - proxy-groups.Disney.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.Bahamut.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.Bahamut.type=fallback
+        - proxy-groups.Bahamut.interval=7200
+        - proxy-groups.Bahamut.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.Spotify.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.Spotify.type=fallback
+        - proxy-groups.Spotify.interval=7200
+        - proxy-groups.Spotify.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.Telegram.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.Telegram.type=fallback
+        - proxy-groups.Telegram.interval=7200
+        - proxy-groups.Telegram.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.Google.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.Google.type=fallback
+        - proxy-groups.Google.interval=7200
+        - proxy-groups.Google.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.OpenAI.proxies=[]groupNames|🛫墙外网站|🚫直连
+        - proxy-groups.OpenAI.type=fallback
+        - proxy-groups.OpenAI.interval=7200
+        - proxy-groups.OpenAI.url="http://www.gstatic.com/generate_204"
+        - proxy-groups.PayPal.proxies=[]groupNames|🚫直连|🛫墙外网站
+        - proxy-groups.PayPal.type=fallback
+        - proxy-groups.PayPal.interval=7200
+        - proxy-groups.PayPal.url="http://www.gstatic.com/generate_204"
+        # diff添加规则
+        - rules.0=RULE-SET,Reject,🛑广告屏蔽
+        - rules.1=RULE-SET,Apple,Ⓜ️微软苹果
+        - rules.2=RULE-SET,Bahamut,Bahamut
+        - rules.3=RULE-SET,Bilibili,Bilibili
+        - rules.4=RULE-SET,Disney,Disney
+        - rules.5=RULE-SET,Google,Google
+        - rules.6=RULE-SET,Microsoft,Ⓜ️微软苹果
+        - rules.7=RULE-SET,Netflix,Netflix
+        - rules.8=RULE-SET,OpenAI,OpenAI
+        - rules.9=RULE-SET,PayPal,PayPal
+        - rules.10=RULE-SET,Spotify,Spotify
+        - rules.11=RULE-SET,Steam,Steam
+        - rules.12=RULE-SET,Telegram,Telegram
+        - rules.13=RULE-SET,YouTube,YouTube
+        # 这个放在最后不要影响专门写的代理
+        - rules.14=RULE-SET,Proxy,🛫墙外网站
+        # 最后再考虑直连
+        - rules.15=RULE-SET,Direct,🚫直连
