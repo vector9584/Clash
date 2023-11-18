@@ -1,5 +1,6 @@
 payload:
   # 主要代理网站
+  - DOMAIN-SUFFIX,missav.com
   - DOMAIN-KEYWORD,github
   - DOMAIN-SUFFIX,github.com
   - DOMAIN-SUFFIX,github.io
